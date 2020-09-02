@@ -26,4 +26,9 @@ class Strings {
   static const String emailVerified = "I've verified";
   static const String resetPasswordMessage = "Instructions to change your password has been emailed to you";
   static const String resendEmailError = "Email has already been sent. Please close the app then log back in to resend the email";
+  static const String courses = "Courses";
+  static const String tasks = "Tasks";
+  static const String schedule = "Schedule";
+  static const String account = "Account";
+  static const String passwordReset = "Password Reset";
 }

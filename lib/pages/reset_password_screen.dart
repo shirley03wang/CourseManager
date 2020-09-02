@@ -24,37 +24,47 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
         kBottomNavigationBarHeight;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(Strings.forgotPassword),
-        backgroundColor: Colors.green[400],
-      ),
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.only(
               left: screenWidth * 0.1,
               right: screenWidth * 0.1,
-              top: screenHeight * 0.07),
+              top: screenHeight * 0.23,
+              bottom: screenHeight * 0.2),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.deepPurple,
+                  Colors.deepPurple[400],
+                  Colors.deepPurple[300],
+                  Colors.deepPurple[200],
+                  Colors.deepPurple[100],
+                ]),
+          ),
           child: Form(
             key: _formKey,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  Strings.email,
+                  Strings.passwordReset,
                   style: TextStyle(
-                    fontSize: screenWidth * 0.037,
+                    fontSize: screenWidth * 0.07,
                     fontWeight: FontWeight.w500,
+                    color: Colors.white,
                   ),
                 ),
-                SizedBox(height: screenHeight * 0.015),
+                SizedBox(height: screenHeight * 0.05),
                 Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                      ),
                   child: TextFormField(
                     decoration: InputDecoration(
-                      border: new UnderlineInputBorder(
-                        borderSide: new BorderSide(
-                          color: Colors.black,
-                        ),
-                      ),
+                      border: InputBorder.none,
                       prefixIcon: Icon(
                         Icons.email,
                         color: Colors.black,
@@ -69,18 +79,21 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     onSaved: (input) => _email = input,
                   ),
                 ),
-                SizedBox(height: screenHeight * 0.6),
+                SizedBox(height: screenHeight * 0.5),
                 Center(
                   child: ButtonTheme(
-                    minWidth: screenWidth * 0.78,
+                    minWidth: screenWidth * 0.45,
                     height: screenHeight * 0.085,
                     child: RaisedButton(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
                       onPressed: resetPassword,
-                      color: Colors.green[400],
+                      color: Colors.deepPurple,
+                      textColor: Colors.white,
                       child: Text(
                         Strings.submit,
                         style: TextStyle(
-                          color: Colors.white,
                           fontSize: screenWidth * 0.037,
                         ),
                       ),
@@ -101,7 +114,8 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       formState.save();
       try {
         await _firebaseAuth.sendPasswordResetEmail(email: _email);
-        alertDialog(context, Strings.forgotPassword, Strings.resetPasswordMessage);
+        alertDialog(
+            context, Strings.passwordReset, Strings.resetPasswordMessage);
       } catch (error) {
         print(error.message);
         alertDialog(context, Strings.authenticationErrorTitle, error.message);

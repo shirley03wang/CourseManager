@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 import '../strings.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class Dashboard extends StatelessWidget {
+class Dashboard extends StatefulWidget {
+  @override
+  _DashboardState createState() => _DashboardState();
+}
+
+class _DashboardState extends State<Dashboard> {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     var statusBarHeight = MediaQuery.of(context).padding.top;
@@ -11,58 +17,35 @@ class Dashboard extends StatelessWidget {
     var screenHeight = MediaQuery.of(context).size.height - statusBarHeight - kBottomNavigationBarHeight;
 
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          // Image.asset(
-          //     'assets/dashboard.png',
-          //     height: screenHeight*0.7,
-          // ),
-          // SizedBox(height: screenHeight*0.05),
-          Center(
-            child: Text(
-              Strings.hangTight,
-              style: TextStyle(
-                fontSize: screenWidth*0.06,
-                fontFamily: 'OpenSans',
-                fontWeight: FontWeight.w600,
-              ),
-            ),
+      body: Container(),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.deepPurple,
+        selectedItemColor: Colors.white,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.book),
+            title: Text(Strings.courses),
           ),
-          SizedBox(height: screenHeight*0.03),
-          Center(
-            child: Text(
-              Strings.noEventsMessage,
-              style: TextStyle(
-                fontSize: screenWidth*0.035,
-                color: Colors.grey,
-              ),
-            ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.assignment),
+            title: Text(Strings.tasks),
           ),
-          Center(
-            child: Text(
-              Strings.tryAgain,
-              style: TextStyle(
-                fontSize: screenWidth*0.035,
-                color: Colors.grey,
-              ),
-            ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.schedule),
+            title: Text(Strings.schedule),
           ),
-          SizedBox(height: screenHeight*0.08),
-          Center(
-            child: FlatButton(
-              onPressed: () {
-                _firebaseAuth.signOut();
-                Navigator.pushNamed(context, '/home');
-              },
-              child: Text(
-                Strings.signOut,
-                style: TextStyle(
-                  color: Colors.green,
-                ),
-              ),
-            ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_box),
+            title: Text(Strings.account),
           ),
         ],
+        onTap: (index){
+          setState((){
+            _currentIndex = index;
+          });
+        }
       ),
     );
   }

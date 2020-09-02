@@ -11,7 +11,12 @@ Future<void> alertDialog(BuildContext context, String alertTitle, String alertMe
         content: Text(alertMessage),
         actions: <Widget>[
           FlatButton(
-            child: Text(Strings.ok),
+            child: Text(
+                Strings.ok,
+              style: TextStyle(
+                color: Colors.deepPurple,
+              ),
+            ),
             onPressed: () {
               Navigator.of(context).pop();
             },
