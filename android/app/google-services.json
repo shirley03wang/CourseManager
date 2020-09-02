@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1028554147885",
+    "firebase_url": "https://course-manager-2a4df.firebaseio.com",
+    "project_id": "course-manager-2a4df",
+    "storage_bucket": "course-manager-2a4df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1028554147885:android:a82d56ca057f087037d0a4",
+        "android_client_info": {
+          "package_name": "com.example.coursemanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1028554147885-okq2cd3aj1grnco8hjik76qp31hlnj0i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAAjDCY85I8e4MwuWpYmCci5BZZMSt7t8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1028554147885-okq2cd3aj1grnco8hjik76qp31hlnj0i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
