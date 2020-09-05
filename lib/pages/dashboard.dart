@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../strings.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'courses_tab/courses_screen.dart';
+import 'sign_out_screen.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -8,16 +9,21 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   int _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
-    var statusBarHeight = MediaQuery.of(context).padding.top;
-    var screenWidth = MediaQuery.of(context).size.width;
-    var screenHeight = MediaQuery.of(context).size.height - statusBarHeight - kBottomNavigationBarHeight;
 
     return Scaffold(
-      body: Container(),
+      body: IndexedStack(
+        index: _currentIndex,
+        children: [
+          CoursesScreen(),
+          Center(child: Text(Strings.tasks)),
+          Center(child: Text(Strings.schedule)),
+          SignOutScreen()
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
@@ -37,8 +43,8 @@ class _DashboardState extends State<Dashboard> {
             title: Text(Strings.schedule),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_box),
-            title: Text(Strings.account),
+            icon: Icon(Icons.exit_to_app),
+            title: Text(Strings.signOut),
           ),
         ],
         onTap: (index){

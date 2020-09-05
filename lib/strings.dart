@@ -4,11 +4,9 @@ class Strings {
   static const String welcome = "Welcome!";
   static const String signUp = "Sign Up";
   static const String login = "Login";
-  //static const String passwordHintText = "********";
   static const String create = "Create";
   static const String name = "Name";
   static const String email = "Email";
-  //static const String emailHintText = "user@example.com";
   static const String password = "Password";
   static const String user = "user";
   static const String forgotPassword = "Forgot Password?";
@@ -31,4 +29,8 @@ class Strings {
   static const String schedule = "Schedule";
   static const String account = "Account";
   static const String passwordReset = "Password Reset";
+  static const String signOutMessage = "Are you sure you want to sign out?";
+  static const String yes = "Yes!";
+  static const String addCourseTab = "add course";
+  static const String addCourseTitle = "Add another couse";
 }
