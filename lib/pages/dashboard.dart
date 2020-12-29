@@ -4,6 +4,7 @@ import '../strings.dart';
 import 'courses_tab/courses_screen.dart';
 import 'tasks_tab/tasks_screen.dart';
 import 'sign_out_screen.dart';
+import 'schedule_screen.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -22,7 +23,8 @@ class _DashboardState extends State<Dashboard> {
         children: [
           CoursesScreen(),
           TasksScreen(),
-          Center(child: Text(Strings.schedule)),
+          ScheduleScreen(),
+          //Center(child: Text(Strings.schedule)),
           SignOutScreen()
         ],
       ),
