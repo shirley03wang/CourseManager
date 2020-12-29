@@ -1,6 +1,6 @@
 # coursemanager
 
-A new Flutter application.
+A mobile application designed for students to manage courses, assignments, and personal tasks.
 
 ## Getting Started
 
