@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../strings.dart';
 import '../input_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -198,9 +199,11 @@ class _LoginScreenState extends State<LoginScreen> {
           }
         }
       } catch (error) {
+        // Note that exception won't be caught in VSCode but works fine in
+        // Android Studio
         print(error.message);
         alertDialog(context, Strings.authenticationErrorTitle, error.message);
-      }
+      } 
     }
   }
 }

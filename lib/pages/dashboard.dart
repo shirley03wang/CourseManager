@@ -1,6 +1,8 @@
+import 'package:coursemanager/pages/tasks_tab/tasks_screen.dart';
 import 'package:flutter/material.dart';
 import '../strings.dart';
 import 'courses_tab/courses_screen.dart';
+import 'tasks_tab/tasks_screen.dart';
 import 'sign_out_screen.dart';
 
 class Dashboard extends StatefulWidget {
@@ -19,7 +21,7 @@ class _DashboardState extends State<Dashboard> {
         index: _currentIndex,
         children: [
           CoursesScreen(),
-          Center(child: Text(Strings.tasks)),
+          TasksScreen(),
           Center(child: Text(Strings.schedule)),
           SignOutScreen()
         ],

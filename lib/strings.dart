@@ -32,5 +32,7 @@ class Strings {
   static const String signOutMessage = "Are you sure you want to sign out?";
   static const String yes = "Yes!";
   static const String addCourseTab = "add course";
-  static const String addCourseTitle = "Add another couse";
+  static const String addCourseTitle = "Add another course";
+  static const String addTaskTab = "add task";
+  static const String addTaskTitle = "Add another task";
 }

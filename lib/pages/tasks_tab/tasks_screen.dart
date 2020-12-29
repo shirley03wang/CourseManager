@@ -1,36 +1,36 @@
 import 'package:flutter/material.dart';
-import '../database.dart';
 import 'package:provider/provider.dart';
-import 'course_list.dart';
-import 'course.dart';
 import '../../strings.dart';
-import '../add_course_from.dart';
+import 'add_task.dart';
+import 'task_list.dart';
+import 'task.dart';
+import '../database.dart';
 
-class CoursesScreen extends StatelessWidget {
+class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    void _showAddCoursePanel() {
+    void _showAddTaskPanel() {
       showModalBottomSheet(context: context, builder: (context) {
-        return AddCourseForm();
+        return AddTask();
       });
     }
 
-    return StreamProvider<List<Course>>.value(
-      value: DatabaseService().courses,
+    return StreamProvider<List<Task>>.value(
+      value: DatabaseService().tasks,
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: Colors.deepPurple,
-          title: Text("My Courses"),
+          title: Text("My Tasks"),
           actions: <Widget>[
             FlatButton.icon(
               icon: Icon(Icons.add),
-              label: Text(Strings.addCourseTab),
-              onPressed: _showAddCoursePanel,
+              label: Text(Strings.addTaskTab),
+              onPressed: _showAddTaskPanel,
             ),
           ],
         ),
-        body: CourseList(),
+        body: TaskList(),
       ),
     );
 
