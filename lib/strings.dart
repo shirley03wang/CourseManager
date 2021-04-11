@@ -35,4 +35,5 @@ class Strings {
   static const String addCourseTitle = "Add another course";
   static const String addTaskTab = "add task";
   static const String addTaskTitle = "Add another task";
+  static const String save = "Save";
 }

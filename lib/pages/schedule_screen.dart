@@ -2,6 +2,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '../strings.dart';
 
 class ScheduleScreen extends StatefulWidget {
   @override
@@ -69,13 +72,22 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
             ),
             ...selectedEvents.map((event) => ListTile(
               title: Text(event),
+              trailing: IconButton(
+                  icon: Icon(Icons.delete, color: Colors.deepPurpleAccent),
+                  onPressed: () {
+                    FirebaseFirestore.instance
+                        .collection("calendar events")
+                        .doc(event)
+                        .delete();
+                  }),
             ))
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: addEvent(),
+        backgroundColor: Colors.deepPurpleAccent,
+        onPressed: addEvent,
       ),
     );
   }
@@ -89,12 +101,18 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
         ),
         actions: <Widget>[
           FlatButton(
-              child: Text("Save"),
+              child: Text(
+                  Strings.save,
+                style: TextStyle(
+                  color: Colors.deepPurpleAccent,
+                ),
+              ),
               onPressed: () {
                 if (eventController.text.isNotEmpty) {
                   setState(() {
                     if (events[controller.selectedDay] != null) {
                       events[controller.selectedDay].add(eventController.text);
+                      //FirebaseFirestore.instance.collection("calendar events").add({'name': eventController.text});
                     } else {
                       events[controller.selectedDay] = [eventController.text];
                     }
@@ -108,4 +126,5 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
       ),
     );
   }
+
 }
